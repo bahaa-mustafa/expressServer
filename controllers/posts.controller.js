@@ -1,8 +1,5 @@
 const post = require("../model/posts")
 
-// const { post } = require("../routes/root.route");
-
-
 const getAllPosts = async (req, res) => {
   const posts = await post.find()
 

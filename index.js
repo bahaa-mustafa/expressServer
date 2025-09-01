@@ -7,14 +7,10 @@ const mongoose = require('mongoose');
 
 const rootRouter = require("./routes/root.route");
 const postsRoute = require("./routes/posts.route");
+const usersRoute = require("./routes/users.route");
 
 // manul middleware for root
-app.use("/", rootRouter
-//   (req, res, next)=>{
-//     console.log("hello from manual middleware! for root / "); 
-//     next()   
-// }
-)
+app.use("/", rootRouter)
 
 // express middleware
 app.use(express.json())
@@ -25,6 +21,9 @@ app.use(morgan("tiny"))
 // manul middleware for posts
 app.use("/posts", postsRoute )
 
+// manul middleware for users
+app.use("/users", usersRoute )
+
 
 // connect to mongodb using mongoosejs 
 mongoose.connect('mongodb://127.0.0.1:27017/express_server').then(()=>{
@@ -34,5 +33,5 @@ mongoose.connect('mongodb://127.0.0.1:27017/express_server').then(()=>{
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Starting app listening on port ${port}`)
 })
